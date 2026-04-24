@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrainAtLifetimeRouteImport } from './routes/train-at-lifetime'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TrainAtLifetimeRoute = TrainAtLifetimeRouteImport.update({
+  id: '/train-at-lifetime',
+  path: '/train-at-lifetime',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/train-at-lifetime': typeof TrainAtLifetimeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/train-at-lifetime': typeof TrainAtLifetimeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/train-at-lifetime': typeof TrainAtLifetimeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/train-at-lifetime'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/train-at-lifetime'
+  id: '__root__' | '/' | '/train-at-lifetime'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TrainAtLifetimeRoute: typeof TrainAtLifetimeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/train-at-lifetime': {
+      id: '/train-at-lifetime'
+      path: '/train-at-lifetime'
+      fullPath: '/train-at-lifetime'
+      preLoaderRoute: typeof TrainAtLifetimeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TrainAtLifetimeRoute: TrainAtLifetimeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
