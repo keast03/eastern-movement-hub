@@ -89,43 +89,56 @@ export function PricingMenu() {
           </div>
         </div>
 
-        {/* Tiers */}
-        <div className="grid md:grid-cols-3 gap-px bg-border/60 border border-border/60">
-          {tiers.map((tier) => (
-            <div
-              key={tier.name}
-              className={`relative bg-background p-8 lg:p-10 flex flex-col ${
-                tier.highlighted ? "lg:-my-4 lg:py-14 bg-card" : ""
-              }`}
-            >
-              {tier.highlighted && (
-                <div className="absolute top-4 right-4 eyebrow text-[0.6rem]">
-                  Most Chosen
-                </div>
-              )}
-              <div className="eyebrow mb-3">{tier.frequency}</div>
-              <h3 className="text-3xl mb-4">{tier.name}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-8 min-h-[3rem]">
-                {tier.description}
-              </p>
-              <div className="mb-8">
-                <span className="text-5xl font-display tracking-tight">
-                  {tier.price[location]}
-                </span>
-                <span className="text-sm text-muted-foreground ml-2">/ month</span>
-              </div>
-              <button
-                className={`mt-auto py-4 text-xs uppercase tracking-[0.18em] transition-colors ${
-                  tier.highlighted
-                    ? "bg-foreground text-background hover:bg-bone"
-                    : "border border-border hover:bg-foreground hover:text-background"
-                }`}
+        {/* Tiers carousel */}
+        <Carousel
+          opts={{ align: "start", loop: false }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {tiers.map((tier) => (
+              <CarouselItem
+                key={tier.name}
+                className="pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3"
               >
-                Start Training
-              </button>
-            </div>
-          ))}
-        </div>
+                <div
+                  className={`relative h-full border border-border/60 bg-background p-8 lg:p-10 flex flex-col ${
+                    tier.highlighted ? "bg-card" : ""
+                  }`}
+                >
+                  {tier.highlighted && (
+                    <div className="absolute top-4 right-4 eyebrow text-[0.6rem]">
+                      Most Chosen
+                    </div>
+                  )}
+                  <div className="eyebrow mb-3">{tier.frequency}</div>
+                  <h3 className="text-3xl mb-4">{tier.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-8 min-h-[3rem]">
+                    {tier.description}
+                  </p>
+                  <div className="mb-8">
+                    <span className="text-5xl font-display tracking-tight">
+                      {tier.price[location]}
+                    </span>
+                    <span className="text-sm text-muted-foreground ml-2">/ month</span>
+                  </div>
+                  <button
+                    className={`mt-auto py-4 text-xs uppercase tracking-[0.18em] transition-colors ${
+                      tier.highlighted
+                        ? "bg-foreground text-background hover:bg-bone"
+                        : "border border-border hover:bg-foreground hover:text-background"
+                    }`}
+                  >
+                    Start Training
+                  </button>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="hidden md:block">
+            <CarouselPrevious className="-left-4 lg:-left-12" />
+            <CarouselNext className="-right-4 lg:-right-12" />
+          </div>
+        </Carousel>
 
         <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground text-center mt-10">
           Cancel anytime · 30-minute consultation included
