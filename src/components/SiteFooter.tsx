@@ -15,7 +15,7 @@ export function SiteFooter() {
           <div className="eyebrow mb-4">Train</div>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>Online Coaching</li>
-            <li>Amli Joya — South Miami</li>
+            <li>Gables Ponce — South Miami</li>
             <li>Life Time — Coral Gables</li>
           </ul>
         </div>

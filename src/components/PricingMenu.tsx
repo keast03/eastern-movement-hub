@@ -84,7 +84,7 @@ export function PricingMenu() {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              In-Person · Amli Joya
+              In-Person · Gables Ponce
             </button>
           </div>
         </div>

@@ -11,13 +11,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Personal training built on movement quality and performance. Online coaching and in-person sessions at Amli Joya South Miami and Life Time Coral Gables.",
+          "Personal training built on movement quality and performance. Online coaching and in-person sessions at Gables Ponce South Miami and Life Time Coral Gables.",
       },
       { property: "og:title", content: "Eastern Movement — Performance Training" },
       {
         property: "og:description",
         content:
-          "Online coaching, in-person sessions at Amli Joya South Miami, and Life Time Coral Gables.",
+          "Online coaching, in-person sessions at Gables Ponce South Miami, and Life Time Coral Gables.",
       },
       { property: "og:image", content: heroImage },
       { name: "twitter:image", content: heroImage },
@@ -80,7 +80,7 @@ function Index() {
         <div className="absolute bottom-0 left-0 right-0 border-t border-border/40 backdrop-blur-sm bg-background/40">
           <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">
             <div>Online · Worldwide</div>
-            <div>Amli Joya · South Miami</div>
+            <div>Gables Ponce · South Miami</div>
             <div>Life Time · Coral Gables</div>
             <div className="text-right hidden md:block">Est. Miami</div>
           </div>
