@@ -2,6 +2,21 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tanstack-start-app",
   "compatibility_date": "2025-09-24",
-  "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "main": "dist/server/server.js",
+  "assets": {
+    "directory": "dist/client"
+  },
+"vars": {
+    "SUPABASE_URL": "https://ccoqtxehlbarjkdgmydk.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNjb3F0eGVobGJhcmprZGdteWRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM4OTg0OTcsImV4cCI6MjA2OTQ3NDQ5N30.EnOvTjMUAT-itPgvIs3ghxBMJ1xFPHdVB7C9MCLI_E4" 
+  },
+  "routes": [
+    {
+      "pattern": "easternmovement.com",
+      "custom_domain": true
+    }
+  ]
 }
