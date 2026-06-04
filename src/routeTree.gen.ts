@@ -9,12 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TrainAtLifetimeRouteImport } from './routes/train-at-lifetime'
+import { Route as InquiryformRouteImport } from './routes/inquiryform'
 import { Route as IndexRouteImport } from './routes/index'
 
-const TrainAtLifetimeRoute = TrainAtLifetimeRouteImport.update({
-  id: '/train-at-lifetime',
-  path: '/train-at-lifetime',
+const InquiryformRoute = InquiryformRouteImport.update({
+  id: '/inquiryform',
+  path: '/inquiryform',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +25,37 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/train-at-lifetime': typeof TrainAtLifetimeRoute
+  '/inquiryform': typeof InquiryformRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/train-at-lifetime': typeof TrainAtLifetimeRoute
+  '/inquiryform': typeof InquiryformRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/train-at-lifetime': typeof TrainAtLifetimeRoute
+  '/inquiryform': typeof InquiryformRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/train-at-lifetime'
+  fullPaths: '/' | '/inquiryform'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/train-at-lifetime'
-  id: '__root__' | '/' | '/train-at-lifetime'
+  to: '/' | '/inquiryform'
+  id: '__root__' | '/' | '/inquiryform'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  TrainAtLifetimeRoute: typeof TrainAtLifetimeRoute
+  InquiryformRoute: typeof InquiryformRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/train-at-lifetime': {
-      id: '/train-at-lifetime'
-      path: '/train-at-lifetime'
-      fullPath: '/train-at-lifetime'
-      preLoaderRoute: typeof TrainAtLifetimeRouteImport
+    '/inquiryform': {
+      id: '/inquiryform'
+      path: '/inquiryform'
+      fullPath: '/inquiryform'
+      preLoaderRoute: typeof InquiryformRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,8 +70,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  TrainAtLifetimeRoute: TrainAtLifetimeRoute,
+  InquiryformRoute: InquiryformRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

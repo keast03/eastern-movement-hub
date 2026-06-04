@@ -16,7 +16,7 @@ export function SiteHeader() {
           <a href="#philosophy" className="text-muted-foreground hover:text-foreground transition-colors">
             Philosophy
           </a>
-          <Link to="/train-at-lifetime" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/inquiryform" className="text-muted-foreground hover:text-foreground transition-colors">
             Life Time
           </Link>
         </nav>
