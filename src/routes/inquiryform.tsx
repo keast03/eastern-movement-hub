@@ -96,16 +96,12 @@ function TrainAtLifetimePage() {
       const injuriesEl = document.getElementById("injuries-input") as HTMLInputElement;
       const injuriesText = injuriesEl?.value?.trim() || "";
 
-      const formattedFocusAreas = selectedGoals.length > 0 
-        ? selectedGoals.join(", ") 
-        : "None selected";
-
-      const { error } = await supabase.from("leads").insert({
+      const { error } = await (supabase as any).from("performance_leads").insert({
         name: values.name,
         email: values.email,
         phone: values.phone,
         birthday: format(values.birthday, "yyyy-MM-dd"),
-        focus_areas: formattedFocusAreas,
+        focus_areas: selectedGoals,
         injuries: injuriesText || null,
         inquiry: values.inquiry,
         source: "lifetime_coral_gables",
