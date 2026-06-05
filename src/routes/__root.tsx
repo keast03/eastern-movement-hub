@@ -1,5 +1,17 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import { setResponseHeader } from "@tanstack/react-start/server";
 import { Toaster } from "@/components/ui/sonner";
+
+const setAgentDiscoveryHeaders = createServerFn().handler(() => {
+  setResponseHeader(
+    "Link",
+    [
+      '</.well-known/api-catalog>; rel="api-catalog"',
+      '</.well-known/agent-skills/index.json>; rel="describedby"',
+    ].join(", ")
+  );
+});
 
 import appCss from "../styles.css?url";
 
@@ -26,6 +38,9 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
+  loader: async () => {
+    await setAgentDiscoveryHeaders();
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },

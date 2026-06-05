@@ -1,0 +1,13 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://easternmovement.com",
+      "service-doc": [
+        { "href": "https://easternmovement.com", "type": "text/html" }
+      ],
+      "describedby": [
+        { "href": "https://easternmovement.com/.well-known/agent-skills/index.json", "type": "application/json" }
+      ]
+    }
+  ]
+}
